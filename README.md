@@ -115,10 +115,17 @@ to temporarily turn off the protection. In gdb the command is:
 
 ### Requirements
 
-* `make` must be installed on your system
-* `arm-none-eabi-gcc` in the path (the one coming with Yotta will do just fine). You can get the latest version from ARM: https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads
+While the original Microsoft/Adafruit build instructions required Unix, these instructions have been adapted for use on Windows (note: _not_ Windows Subsystem for Linux, but actually on Windows).
+
+* `make` must be installed on your system. 
+  * `make` can be found at this link: https://gnuwin32.sourceforge.net/packages/make.htm
+  * Other ways to get `make` on Windows: https://stackoverflow.com/questions/32127524/how-to-install-and-use-make-in-windows
+* `arm-none-eabi-gcc` in the path (the one coming with Yotta will do just fine). 
+  * You can get the latest version from ARM: https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads
 * `openocd` - you can use the one coming with Arduino (after your install the M0 board support)
 * `Python 3` must be installed on your system
+  * Note: Depending on your install, sometimes the executable is named "python3.exe", and sometimes it is named "python.exe". I have edited the makefile so that it expects an executable named "python.exe". If this is an issue, you can edit the makefile on your machine to use "python3.exe" instead.
+  * I personally use Miniconda as my Python installation: https://docs.conda.io/en/latest/miniconda.html
 
 Atmel Studio is not supported.
 
