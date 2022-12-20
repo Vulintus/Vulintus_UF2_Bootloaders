@@ -126,6 +126,7 @@ While the original Microsoft/Adafruit build instructions required Unix, these in
 * `Python 3` must be installed on your system
   * Note: Depending on your install, sometimes the executable is named "python3.exe", and sometimes it is named "python.exe". I have edited the makefile so that it expects an executable named "python.exe". If this is an issue, you can edit the makefile on your machine to use "python3.exe" instead.
   * I personally use Miniconda as my Python installation: https://docs.conda.io/en/latest/miniconda.html
+* All of the above tools need to be in your Windows "path", so that you can access them from the command line. 
 
 Atmel Studio is not supported.
 
