@@ -1,10 +1,17 @@
-# UF2 Bootloader
+# Vulintus UF2 Bootloader
 
 This repository contains a bootloader, derived from Atmel's SAM-BA,
 which in addition to the USB CDC (serial) protocol, also supports
 the USB MSC (mass storage).
 
 _This repository has been forked from the original Microsoft and Adafruit repositories for the purpose of making bootloaders specifically for Vulintus devices._
+
+## Bootloaders contained in this repository
+
+In addition to the bootloaders originally contributed by Microsoft and Adafruit, the following Vulintus bootloaders are currently found in this repository:
+
+1. HabiTrak (SAMD51P19A)
+2. OmniTrak (SAMD51P20A)
 
 ## UF2
 
