@@ -4,7 +4,7 @@ This repository contains a bootloader, derived from Atmel's SAM-BA,
 which in addition to the USB CDC (serial) protocol, also supports
 the USB MSC (mass storage).
 
-[![Build Status](https://travis-ci.org/Microsoft/uf2-samd21.svg?branch=master)](https://travis-ci.org/Microsoft/uf2-samd21)
+_This repository has been forked from the original Microsoft and Adafruit repositories for the purpose of making bootloaders specifically for Vulintus devices._
 
 ## UF2
 
@@ -115,10 +115,10 @@ to temporarily turn off the protection. In gdb the command is:
 
 ### Requirements
 
-* `make` and an Unix environment
-* `node`.js in path (optional)
+* `make` must be installed on your system
 * `arm-none-eabi-gcc` in the path (the one coming with Yotta will do just fine). You can get the latest version from ARM: https://developer.arm.com/open-source/gnu-toolchain/gnu-rm/downloads
 * `openocd` - you can use the one coming with Arduino (after your install the M0 board support)
+* `Python 3` must be installed on your system
 
 Atmel Studio is not supported.
 
