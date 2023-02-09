@@ -46,6 +46,7 @@ LDFLAGS= $(COMMON_FLAGS) \
 -save-temps -nostartfiles \
 --specs=nano.specs --specs=nosys.specs
 BUILD_PATH=build/$(BOARD)
+BUILD_PATH_WINDOWS=build\$(BOARD)
 INCLUDES = -I. -I./inc -I./inc/preprocessor
 INCLUDES += -I./boards/$(BOARD) -Ilib/cmsis/CMSIS/Include -Ilib/usb_msc
 INCLUDES += -I$(BUILD_PATH)
@@ -155,7 +156,7 @@ selflogs:
 
 dirs:
 	@echo "Building $(BOARD)"
-	-@mkdir -p $(BUILD_PATH)
+	-@mkdir $(BUILD_PATH_WINDOWS)
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) -L$(BUILD_PATH) $(LDFLAGS) \
@@ -167,7 +168,7 @@ $(EXECUTABLE): $(OBJECTS)
 	@echo
 
 $(BUILD_PATH)/uf2_version.h: Makefile
-	echo "#define UF2_VERSION_BASE \"$(UF2_VERSION_BASE)\""> $@
+	echo #define UF2_VERSION_BASE "$(UF2_VERSION_BASE)"> $@
 
 $(SELF_EXECUTABLE): $(SELF_OBJECTS)
 	$(CC) -L$(BUILD_PATH) $(LDFLAGS) \
