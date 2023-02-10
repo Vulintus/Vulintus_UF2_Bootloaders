@@ -1,3 +1,7 @@
 {
-    "files.associations": {}
+    "files.associations": {
+        "uf2.h": "c",
+        "conf_sd_mmc.h": "c",
+        "ff.h": "c"
+    }
 }

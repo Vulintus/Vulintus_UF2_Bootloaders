@@ -42,7 +42,7 @@
 #define NUM_FAT_BLOCKS 16000
 
 // Logging to help debugging
-#define USE_LOGS 0
+#define USE_LOGS 1
 // Check various conditions; best leave on
 #define USE_ASSERT 0 // 188 bytes
 // Enable reading flash via FAT files; otherwise drive will appear empty

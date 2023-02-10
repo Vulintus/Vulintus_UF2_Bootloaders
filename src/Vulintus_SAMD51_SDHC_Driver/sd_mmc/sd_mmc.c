@@ -41,8 +41,7 @@
 
 #include "sd_mmc_protocol.h"
 #include "sd_mmc.h"
-
-#include "../logging/sdhc_debug_logging.h"
+#include "../vulintus_pin_functions.h"
 
 /*
 #if CONF_OS_SUPPORT
@@ -1028,7 +1027,7 @@ static sd_mmc_err_t sd_mmc_select_slot(uint8_t slot)
 
 	if (_cd && _cd[slot].pin != -1) {
 		/** Card Detect pins */
-		if (digitalRead(_cd[slot].pin) != _cd[slot].val) {        
+		if (digital_read(_cd[slot].pin) != _cd[slot].val) {        
 			if (sd_mmc_cards[slot].state == SD_MMC_CARD_STATE_DEBOUNCE) {
 				SD_MMC_STOP_TIMEOUT();
 			}
@@ -1129,7 +1128,7 @@ static bool sd_mmc_mci_card_init(void)
 #endif
 
     //After much testing, it seems like a small delay here helps the program to not hang
-    delay(1);
+    vulintus_delay(1);
 
 	/* CMD0 - Reset all cards to idle state.*/
 	if (!driver_send_cmd(sd_mmc_hal, SDMMC_MCI_CMD0_GO_IDLE_STATE, 0)) {
@@ -1146,7 +1145,7 @@ static bool sd_mmc_mci_card_init(void)
 	}
 
     //After much testing, it seems like a small delay here helps the program to not hang
-    delay(1);
+    vulintus_delay(1);
 
 	if (sd_mmc_card->type & CARD_TYPE_SD) {
 		/* Try to get the SD card's operating condition */
@@ -1423,7 +1422,7 @@ bool sd_mmc_is_write_protected(uint8_t slot)
 		return false;
 	}
 	/* Write Protect Detect */
-	if (digitalRead(_wp[slot].pin) == _wp[slot].val) {
+	if (digital_read(_wp[slot].pin) == _wp[slot].val) {
 		return true;
 	}
 	return false;

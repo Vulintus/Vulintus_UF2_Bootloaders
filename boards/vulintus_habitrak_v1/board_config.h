@@ -10,6 +10,8 @@
 #define USB_VID 0x239A
 #define USB_PID 0x0031
 
+#define VULINTUS_SAMD51_USE_SDHC
+
 //#define LED_PIN PIN_PB01
 //#define LED_TX_PIN PIN_PC30
 //#define LED_RX_PIN PIN_PC31

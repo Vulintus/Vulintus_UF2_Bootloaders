@@ -9,6 +9,7 @@ extern "C" {
 #include <stdint.h>
 #include "asf4/hal/hal_atomic.h"
 #include "asf4/hal/hal_mci_sync.h"
+#include "vulintus_pin_functions.h"
 
 extern struct mci_sync_desc IO_BUS;
 extern Sdhc *sdhc_instance;
@@ -20,9 +21,7 @@ extern uint32_t sdhc_gclk_source_slow;
 /**
  * \brief Initialize SD MMC Stack
  */
-int sdhc_driver_init(int gclk_source, uint32_t gclk_frequency, 
-                     int gclk_source_slow, uint32_t gclk_frequency_slow, 
-                     int clk_pin, int cmd_pin, int dat0_pin, int dat1_pin, int dat2_pin, int dat3_pin);
+int sdhc_driver_init(int gclk_source, uint32_t gclk_frequency, int gclk_source_slow, uint32_t gclk_frequency_slow, int sdhc_index);
 
 #ifdef __cplusplus
 }

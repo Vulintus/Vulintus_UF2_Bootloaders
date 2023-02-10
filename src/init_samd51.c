@@ -3,6 +3,9 @@
 // SAMD51 starts at 48MHz by default.
 uint32_t current_cpu_frequency_MHz = 48;
 
+/* Default Arduino systick handler */
+extern void SysTick_DefaultHandler(void);
+
 void system_init(void) {
     // Automatic wait states.
     NVMCTRL->CTRLA.bit.AUTOWS = 1;
@@ -86,4 +89,8 @@ void system_init(void) {
     // current_cpu_frequency_MHz = 48;
 }
 
-void SysTick_Handler(void) { LED_TICK(); }
+void SysTick_Handler(void) 
+{ 
+    LED_TICK(); 
+    //SysTick_DefaultHandler();
+}

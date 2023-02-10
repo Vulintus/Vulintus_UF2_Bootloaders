@@ -79,6 +79,7 @@
  */
 
 #include "uf2.h"
+//#include "Vulintus_SAMD51_SDHC_Driver/Vulintus_SAMD51_SDHC.h"
 
 static void check_start_application(void);
 
@@ -271,6 +272,10 @@ int main(void) {
 #endif
 
     logmsg("Before main loop");
+
+//#ifdef VULINTUS_SAMD51_USE_SDHC
+    //sdhc_driver_init(0, 48000000, 0, 48000000, 0);
+//#endif
 
     usb_init();
 

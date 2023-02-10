@@ -495,11 +495,15 @@ void AT91F_InitUSB(void) {
     while(GCLK->SYNCBUSY.bit.GENCTRL0) {}
     #endif
 
+    logmsg("AT91F_InitUSB: Point A");
+
     /* Reset */
     USB->HOST.CTRLA.bit.SWRST = 1;
     while (USB->HOST.SYNCBUSY.bit.SWRST) {
         /* Sync wait */
     }
+
+    logmsg("AT91F_InitUSB: Point B");
 
     /* Load Pad Calibration */
     pad_transn = ((*((uint32_t*) USB_FUSES_TRANSN_ADDR)) & USB_FUSES_TRANSN_Msk) >> USB_FUSES_TRANSN_Pos;

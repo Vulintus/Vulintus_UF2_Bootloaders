@@ -9,7 +9,7 @@ ifeq ($(CHIP_FAMILY), samd51)
 COMMON_FLAGS = -mthumb -mcpu=cortex-m4 -O2 -g -DSAMD51
 endif
 WFLAGS = \
--Werror -Wall -Wstrict-prototypes \
+-Wall -Wstrict-prototypes \
 -Werror-implicit-function-declaration -Wpointer-arith -std=gnu99 \
 -ffunction-sections -fdata-sections -Wchar-subscripts -Wcomment -Wformat=2 \
 -Wimplicit-int -Wmain -Wparentheses -Wsequence-point -Wreturn-type -Wswitch \
@@ -77,7 +77,7 @@ COMMON_SRC = \
 	src/images.c \
 	src/utils.c
 
-SOURCES = $(COMMON_SRC) \
+TEMPORARY_SOURCES = $(COMMON_SRC) \
 	src/cdc_enumerate.c \
 	src/fat.c \
 	src/main.c \
@@ -85,6 +85,22 @@ SOURCES = $(COMMON_SRC) \
 	src/sam_ba_monitor.c \
 	src/uart_driver.c \
 	src/hid.c \
+
+#ifeq ($(CHIP_FAMILY), samd51)
+#SOURCES = $(TEMPORARY_SOURCES) \
+#	src/Vulintus_SAMD51_SDHC_Driver/asf4/hal/hal_atomic.c \
+#	src/Vulintus_SAMD51_SDHC_Driver/asf4/hal/hal_mci_sync.c \
+#	src/Vulintus_SAMD51_SDHC_Driver/asf4/hpl/hpl_sdhc.c \
+#	src/Vulintus_SAMD51_SDHC_Driver/asf4/hal/hal_atomic.c \
+#	src/Vulintus_SAMD51_SDHC_Driver/config/peripheral_clock_config.c \
+#	src/Vulintus_SAMD51_SDHC_Driver/diskio/sdmmc_diskio.c \
+#	src/Vulintus_SAMD51_SDHC_Driver/fatfs/ff.c \
+#	src/Vulintus_SAMD51_SDHC_Driver/sd_mmc/sd_mmc.c \
+#	src/Vulintus_SAMD51_SDHC_Driver/sdhc_driver_init.c \
+#	src/Vulintus_SAMD51_SDHC_Driver/vulintus_pin_functions.c
+#else
+SOURCES = $(TEMPORARY_SOURCES)
+#endif
 
 SELF_SOURCES = $(COMMON_SRC) \
 	src/selfmain.c
@@ -157,6 +173,16 @@ selflogs:
 dirs:
 	@echo "Building $(BOARD)"
 	-@mkdir $(BUILD_PATH_WINDOWS)
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver\asf4
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver\asf4\hal
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver\asf4\hpl
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver\asf4\hri
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver\asf4\utils
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver\config
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver\diskio
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver\fatfs
+	-@mkdir $(BUILD_PATH_WINDOWS)\Vulintus_SAMD51_SDHC_Driver\sd_mmc
 
 $(EXECUTABLE): $(OBJECTS)
 	$(CC) -L$(BUILD_PATH) $(LDFLAGS) \
